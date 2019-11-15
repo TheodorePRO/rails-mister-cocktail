@@ -1,9 +1,10 @@
-new cocktail
+
+
 
 <div class="container">
-  <div>
+  <div class="mt-4">
     <%= simple_form_for @cocktail do |f|%>
-      <%= f.input :name , placeholder: 'Nom du nouveau cocktail', label: "false" %>
+      <%= f.input :name , placeholder: 'Nom du nouveau cocktail', label: false %>
       <%= f.input :photo, as: :file %>
       <%= f.submit 'submit', class: 'btn btn-primary' %>
     <% end %>
