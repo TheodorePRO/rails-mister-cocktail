@@ -13,8 +13,8 @@
   <h4 class="m-2" ><%= @cocktail.name %></h4>
 
         <% @cocktail.doses.each do |d| %>
-          <% d.ingredient.name %>
-          <% d.description %>
+          <%= d.ingredient.name %>
+          <%= d.description %>
         <% end %>
 
   </div>
