@@ -2,9 +2,13 @@
 <div class="container">
 
   <div class="card-product">
-    <%= cl_image_tag @article.photo.key, height: 200, width: 200, crop: :fill %>
+    <%  @cocktails.each do |c| %>
+      <% if c.photo.attached? %>
+        <%= cl_image_tag c.photo.key, height: 200, width: 200, crop: :fill %>
+      <% else %>
+        <%= cl_image_tag "https://picsum.photos/seed/picsum/200/200", height: 200, width: 200, crop: :fill %>
+      <% end %>
       <div class="card-product-infos">
-        <%  @cocktails.each do |c| %>
         <h2><%= link_to c.name,cocktail_path(c)%></h2>
         <p>Click for <strong>ingredients </strong></p>
       </div>
