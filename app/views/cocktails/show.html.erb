@@ -4,9 +4,13 @@
 
 <div class="container mt-4">
   <div class="card">
-<%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
-  <h4 class="m-2" ><%= @cocktail.name %></h4>
+    <% if @cocktail.photo.attached? %>
+      <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag "https://picsum.photos/seed/picsum/500/300", crop: :fill %>
+    <% end %>
 
+  <h4 class="m-2" ><%= @cocktail.name %></h4>
 
         <% @cocktail.doses.each do |d| %>
           <% d.ingredient.name %>
@@ -18,7 +22,7 @@
   <div>
     <h6>new ingredient ?</h6>
     <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.input :ingredient, collection: Ingredient.all, default: 'ingredient' %>
+      <%= f.input :ingredient, collection: Ingredient.all, default: 'ingredient', label: false %>
       <%= f.input :description , placeholder: 'Description', label: false %>
       <%= f.submit 'submit', class: 'btn btn-primary' %>
     <% end %>

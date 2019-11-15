@@ -1,8 +1,8 @@
 
 <div class="container">
 
-  <div class="card-product">
     <%  @cocktails.each do |c| %>
+      <div class="card-product">
       <% if c.photo.attached? %>
         <%= cl_image_tag c.photo.key, height: 200, width: 200, crop: :fill %>
       <% else %>
