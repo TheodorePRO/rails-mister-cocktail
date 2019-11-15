@@ -1,17 +1,17 @@
 
 <div class="container">
-  <ul>
-    <%  @cocktails.each do |c| %>
-      <div class="card">
-        <%= link_to c.name,cocktail_path(c)%>
+
+  <div class="card-product">
+    <%= cl_image_tag @article.photo.key, height: 200, width: 200, crop: :fill %>
+      <div class="card-product-infos">
+        <%  @cocktails.each do |c| %>
+        <h2><%= link_to c.name,cocktail_path(c)%></h2>
+        <p>Click for <strong>ingredients </strong></p>
       </div>
-      <% end %>
+    <% end %>
+  </div>
 
-
-    </ul>
   <div class="card">
     <%= link_to 'New Cocktail', new_cocktail_path%>
   </div>
 </div>
-
-
