@@ -1,0 +1,28 @@
+
+
+
+
+<div class="container mt-4">
+  <div class="card">
+  <h4 class="m-2" ><%= @cocktail.name %></h4>
+
+
+        <% @cocktail.doses.each do |d| %>
+          <% d.ingredient.name %>
+          <% d.description %>
+        <% end %>
+
+
+  </div>
+
+  <div>
+    <h6>new ingredient ?</h6>
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :ingredient, collection: Ingredient.all, default: 'ingredient' %>
+      <%= f.input :description , placeholder: 'Description', label: false %>
+      <%= f.submit 'submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+</div>
+
