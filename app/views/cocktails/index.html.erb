@@ -4,18 +4,23 @@
 
 <div class="container">
   <div class="cards">
-    <%  @cocktails.each do |c| %>
-      <% if c.photo.attached? %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path c.photo.key, height: 300, width: 400, crop: :fill %>')">
-      <% else %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail,<%=c.name%>)">
-      <% end %>
-        <%= link_to c.name,cocktail_path(c)%>
+    <%= link_to new_cocktail_path do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(250,250,250,0.5), rgba(250,250,250,0.5)), url(https://source.unsplash.com/featured/?cocktail)">
+        <i class="fas fa-cocktail"></i>
+        <i class="fas fa-plus-square"></i>
       </div>
     <% end %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail)">
-      <%= link_to 'NEW', new_cocktail_path%>
-    </div>
+    <%  @cocktails.each do |c| %>
+      <%= link_to cocktail_path(c) do %>
+        <% if c.photo.attached? %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path c.photo.key, height: 300, width: 400, crop: :fill %>')">
+        <% else %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail,<%=c.name%>)">
+        <% end %>
+        <%= c.name %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
